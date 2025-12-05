@@ -12,7 +12,11 @@ app.use(express.json())
 
 app.use('/api/v1', routerCustomer, routerService)
 
+<<<<<<< HEAD
 const port = process.env.PORT || 3000
+=======
+const port = 3000
+>>>>>>> 8755716 (feat init)
 
 database.db
   .sync({ force: false })

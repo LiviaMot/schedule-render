@@ -6,6 +6,7 @@ class Database {
   }
 
   init() {
+<<<<<<< HEAD
     this.db = new Sequelize(
       process.env.DB_NAME || 'agenda',
       process.env.DB_USER || 'root',
@@ -22,6 +23,15 @@ class Database {
         }
       }
     )
+=======
+    this.db = new Sequelize({
+      database: 'agenda',
+      host: 'localhost',
+      username: 'root',
+      password: '',
+      dialect: 'mysql'
+    })
+>>>>>>> 8755716 (feat init)
   }
 }
 
