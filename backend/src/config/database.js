@@ -14,8 +14,12 @@ class Database {
         host: process.env.DB_HOST || 'localhost',
         dialect: 'mysql',
         port: process.env.DB_PORT || 3306,
-        // No Docker interno do Render, geralmente não precisa de SSL obrigatório, 
-        // mas é bom deixar preparado caso precise.
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false
+          }
+        }
       }
     )
   }
