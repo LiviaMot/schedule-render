@@ -2,12 +2,9 @@
   "type": "module",
   "name": "backend",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "start": "node src/index.js",
-=======
->>>>>>> 8755716 (feat init)
     "dev": "node --watch ./src/index.js",
     "test": "cross-env TEST=true node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
   },
@@ -18,12 +15,12 @@
     "cors": "^2.8.5",
     "express": "5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.15.3",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "cross-env": "10.1.0",
     "jest": "30.2.0"
-  },
-  "description": ""
+  }
 }

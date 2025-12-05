@@ -6,24 +6,6 @@ class Database {
   }
 
   init() {
-<<<<<<< HEAD
-    this.db = new Sequelize(
-      process.env.DB_NAME || 'agenda',
-      process.env.DB_USER || 'root',
-      process.env.DB_PASS || '',
-      {
-        host: process.env.DB_HOST || 'localhost',
-        dialect: 'mysql',
-        port: process.env.DB_PORT || 3306,
-        dialectOptions: {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false
-          }
-        }
-      }
-    )
-=======
     this.db = new Sequelize({
       database: 'agenda',
       host: 'localhost',
@@ -31,7 +13,6 @@ class Database {
       password: '',
       dialect: 'mysql'
     })
->>>>>>> 8755716 (feat init)
   }
 }
 
