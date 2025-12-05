@@ -6,13 +6,25 @@ class Database {
   }
 
   init() {
-    this.db = new Sequelize({
-      database: 'agenda',
-      host: 'localhost',
-      username: 'root',
-      password: '',
-      dialect: 'mysql'
-    })
+    this.db = new Sequelize(
+      process.env.DB_NAME || 'agenda',
+      process.env.DB_USER || 'root',
+      process.env.DB_PASS || '',
+      {
+        host: process.env.DB_HOST || 'localhost',
+        dialect: process.env.DB_DIALECT || 'mysql',
+        port: process.env.DB_PORT || 3306,
+        logging: false,
+        dialectOptions: {
+            ...(process.env.DB_HOST ? {
+              ssl: {
+                require: true,
+                rejectUnauthorized: false
+              }
+            } : {})
+        }
+      }
+    )
   }
 }
 
