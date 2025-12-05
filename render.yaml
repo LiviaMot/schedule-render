@@ -1,11 +1,9 @@
 services:
-  # ------------------------------------
-  # 1. O BACKEND (Node.js Web Service)
-  # ------------------------------------
+  # 1. Backend
   - type: web
     name: agenda-backend
     runtime: node
-    region: frankfurt # Escolha a região mais próxima (ex: oregon ou frankfurt)
+    region: frankfurt
     plan: free
     rootCommand: cd backend
     buildCommand: npm install
@@ -15,8 +13,6 @@ services:
         value: 10000
       - key: DB_DIALECT
         value: mysql
-      # Estas variáveis "sync: false" significam que o Render vai
-      # abrir campos para você colar os dados do Aiven manualmente
       - key: DB_HOST
         sync: false
       - key: DB_PORT
@@ -26,22 +22,18 @@ services:
       - key: DB_PASS
         sync: false
       - key: DB_NAME
-        value: defaultdb # Ou 'agenda', se mudou o nome no Aiven
+        value: defaultdb
 
-  # ------------------------------------
-  # 2. O FRONTEND (React Static Site)
-  # ------------------------------------
+  # 2. Frontend
   - type: static
     name: agenda-frontend
     runtime: static
     region: frankfurt
     plan: free
     rootCommand: cd frontend
-    # Comando para instalar dependências e criar a pasta 'dist'
     buildCommand: npm install && npm run build
     publishPath: dist
     envVars:
-      # Pega automaticamente a URL do backend que criamos acima
       - key: VITE_API_URL
         fromService:
           type: web
