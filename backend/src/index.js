@@ -1,0 +1,26 @@
+import express from 'express'
+import cors from 'cors'
+import routerCustomer from './router/customer.js'
+import routerService from './router/service.js'
+import database from './config/database.js'
+import './model/relations.js'
+
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+app.use('/api/v1', routerCustomer, routerService)
+
+const port = 3000
+
+database.db
+  .sync({ force: false })
+  .then((_) => {
+    app.listen(port, () => {
+      console.info("Servidor rodando na porta " + port)
+    })
+  })
+  .catch((e) => {
+    console.log("Não conectou com o banco " + e)
+  })

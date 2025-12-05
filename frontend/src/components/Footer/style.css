@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  background-color: rgb(130, 192, 37);
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+footer > p {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+}
